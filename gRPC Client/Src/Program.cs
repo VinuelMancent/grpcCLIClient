@@ -7,6 +7,8 @@ namespace gRPC_Client
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            var myClient = new Client();
+            myClient.Check();
         }
     }
 }
