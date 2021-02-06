@@ -6,9 +6,10 @@ namespace gRPC_Client
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Starting client!");
             var myClient = new Client();
             myClient.Greeter();
+            myClient.Download("download.txt");
         }
     }
 }
