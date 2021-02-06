@@ -6,7 +6,7 @@ namespace gRPC_Client
 {
     public class Client
     {
-        public void Check()
+        public void Greeter()
         {
             var myOptions = new GrpcChannelOptions
             {
@@ -17,7 +17,7 @@ namespace gRPC_Client
 
             var reply = client.SayHello((new Message
             {
-                Body = "pochis hat nen tollen hintern",
+                Body = "Greetings to the server",
             }));
         }
     }
