@@ -1,0 +1,16 @@
+syntax = "proto3";
+package cloud;
+
+message Message {
+  string body = 1;
+}
+message File{
+  bytes file = 1;
+  string filename = 2;
+}
+
+service Cloud {
+  rpc SayHello(Message) returns (Message) {}
+  rpc Upload(File) returns (Message) {}
+  rpc Download(Message) returns (File){}
+}

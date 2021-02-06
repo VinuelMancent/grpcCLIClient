@@ -1,0 +1,11 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/modules.xml
+/.idea.gRPC Client.iml
+/contentModel.xml
+/projectSettingsUpdater.xml
+# Datasource local storage ignored files
+/../../../../../../../../:\Users\Vincent\RiderProjects\gRPC Client\.idea\.idea.gRPC Client\.idea/dataSources/
+/dataSources.local.xml
