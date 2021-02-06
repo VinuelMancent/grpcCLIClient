@@ -10,6 +10,7 @@ namespace gRPC_Client
             var myClient = new Client();
             myClient.Greeter();
             myClient.Download("download.txt");
+            myClient.Upload("C#Upload.txt");
         }
     }
 }
