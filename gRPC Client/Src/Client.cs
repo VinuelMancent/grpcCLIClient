@@ -1,10 +1,15 @@
 using System;
+using System.Buffers.Text;
 using Cloud;
 using Grpc.Core;
 using Grpc.Net.Client;
 using System.IO;
+using System.Threading;
 using Google.Protobuf;
 using Microsoft.VisualBasic.FileIO;
+using File = Cloud.File;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace gRPC_Client
 {
@@ -13,6 +18,7 @@ namespace gRPC_Client
         private GrpcChannelOptions myOptions;
         private GrpcChannel channel;
         private Cloud.Cloud.CloudClient client;
+        private string name = "";
         
         public Client()
         {
@@ -56,6 +62,25 @@ namespace gRPC_Client
                 Filename = filename,
             });
             Console.WriteLine(reply.Body);
+        }
+
+        public string[] GetFiles()
+        {
+            var reply = client.GetFiles(new Message
+            {
+                Body = ".",
+            });
+            //translate the response into a bytearray containing the json string
+            var responseByteArray = Convert.FromBase64String(reply.Body);
+            //translate the bytearray into a string in json format
+            var jsonString = System.Text.Encoding.Default.GetString(responseByteArray);
+            JObject jsonObject = JObject.Parse(jsonString);
+            //JsonConvert.DeserializeObject(jsonString);
+            foreach (var item in jsonObject)
+            {
+                Console.WriteLine(item.Key +  ": " + item.Value);
+            }
+            return null;
         }
         
     }
